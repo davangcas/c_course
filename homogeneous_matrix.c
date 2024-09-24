@@ -4,17 +4,17 @@ void multiply_homogeneous_matrix(double a[4][4], double b[4][4], double result[4
 
 int main(){
     double a[4][4] = {
-        {1, 2, 3, 4},
-        {5, 6, 7, 8},
-        {9, 10, 11, 12},
-        {13, 14, 15, 16}
+        {0, -1, 0, 0},
+        {1, 0, 0, 0},
+        {0, 0, 1, 0},
+        {0, 0, 0, 1}
     };
 
     double b[4][4] = {
-        {1, 2, 3, 4},
-        {5, 6, 7, 8},
-        {9, 10, 11, 12},
-        {13, 14, 15, 16}
+        {1, 0, 0, 5},
+        {0, 1, 0, 5},
+        {0, 0, 1, 10},
+        {0, 0, 0, 1}
     };
 
     double result[4][4];
@@ -22,9 +22,20 @@ int main(){
     multiply_homogeneous_matrix(a, b, result);
 
     for (int i = 0; i < 4; i++){
+        printf("{");
         for (int j = 0; j < 4; j++){
-            printf("%f ", result[i][j]);
+            printf("%.2f", result[i][j]);
+
+            if (j < 3){
+                printf(", ");
+            }
         }
+        printf("}");
+
+        if (i < 3){
+            printf(",");
+        }
+
         printf("\n");
     }
     return 0;
